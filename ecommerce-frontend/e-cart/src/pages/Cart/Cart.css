@@ -1,0 +1,81 @@
+@media (max-width: 768px) {
+
+  /* Fix large top space */
+  .pt-32 {
+    padding-top: 5rem !important;
+  }
+
+  /* Stack grid to single column */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .col-span-2 {
+    grid-column: span 1 !important;
+  }
+
+  /* Smaller heading */
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  /* Hide table header */
+  table thead {
+    display: none;
+  }
+
+  /* Each row becomes a card */
+  table tbody tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    padding: 12px;
+  }
+
+  /* Each cell becomes a row with a label */
+  table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px !important;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* Add labels before each cell */
+  table tbody td:nth-child(1)::before { content: "#"; font-weight: bold; }
+  table tbody td:nth-child(2)::before { content: "Name"; font-weight: bold; }
+  table tbody td:nth-child(3)::before { content: "Image"; font-weight: bold; }
+  table tbody td:nth-child(4)::before { content: "Quantity"; font-weight: bold; }
+  table tbody td:nth-child(5)::before { content: "Price"; font-weight: bold; }
+  table tbody td:nth-child(6)::before { content: "Action"; font-weight: bold; }
+
+  /* Image to the end */
+  table tbody td:nth-child(3) {
+    justify-content: flex-end;
+  }
+
+  /* Image smaller */
+  table img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  /* Quantity controls */
+  table tbody td:nth-child(4) div {
+    justify-content: flex-end;
+  }
+
+  table input[type="text"] {
+    width: 40px !important;
+    padding: 4px !important;
+    text-align: center;
+  }
+
+}

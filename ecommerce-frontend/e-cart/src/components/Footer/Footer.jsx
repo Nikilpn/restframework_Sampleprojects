@@ -1,19 +1,19 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTruckFast, faHeart, faCartShopping, faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faPeopleGroup, faHeart, faCartShopping, faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import './Footer.css'
 function Footer() {
   return (
     <>
-      <footer className='bg-violet-800 text-white p-10 mt-10'>
+      <footer className='bg-emerald-600 text-white p-10 mt-10'>
         <div className='grid grid-cols-3 gap-4'>
 
           {/* Logo & About */}
           <div>
             <h2 className='text-2xl font-bold mb-3'>
-              <FontAwesomeIcon icon={faTruckFast} className='mr-2' />
-              Daily Cart
+              <FontAwesomeIcon icon={faPeopleGroup} className='mr-2' />
+              Friends Cart
             </h2>
             <p className='text-sm text-gray-300'>Your one stop shop for all daily needs. Fast delivery, great prices!</p>
           </div>
@@ -36,7 +36,7 @@ function Footer() {
           <div>
             <h3 className='text-xl font-bold mb-3'>Contact Us</h3>
             <ul className='space-y-2 text-sm text-gray-300'>
-              <li><FontAwesomeIcon icon={faEnvelope} className='mr-2' />dailycart@gmail.com</li>
+              <li><FontAwesomeIcon icon={faEnvelope} className='mr-2' />Friendscart@gmail.com</li>
               <li><FontAwesomeIcon icon={faPhone} className='mr-2' />+91 9876543210</li>
               <li><FontAwesomeIcon icon={faLocationDot} className='mr-2' />Kerala, India</li>
             </ul>
@@ -46,7 +46,7 @@ function Footer() {
 
         {/* Bottom */}
         <div className='text-center border-t border-violet-600 mt-8 pt-4 text-sm text-gray-300'>
-          <p>© 2024 Daily Cart. All rights reserved.</p>
+          <p>© 2024 Friends Cart. All rights reserved.</p>
         </div>
 
       </footer>

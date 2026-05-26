@@ -2,12 +2,14 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faHeart, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
+import Header from '../../components/Header/Header'
 
 function View() {
   const { id } = useParams()
 
   return (
     <>
+     <Header />
       <div className='pt-36 mx-5'>
         <div className='grid grid-cols-2 gap-4'>
 
