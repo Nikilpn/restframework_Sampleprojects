@@ -9,18 +9,20 @@ import Wishlist from "./pages/WishList/Wishlist"
 import PageNotFound from "./pages/pageNotFound/pageNotFound"
 
 function App() {
-const [count, setCount] = useState(0)
-return (
-<>
-<Routes>
-<Route path='/' element={<Home/>}/>
-<Route path='/Cart' element={<Cart/>}/>
-<Route path='/Wishlist' element={<Wishlist/>}/>
-<Route path='/:id/View' element={<View/>}/>
-<Route path='/*' element={<PageNotFound/>}/>
-</Routes>
-<Footer/>
-</>
+  return (
+    <div className='flex flex-col min-h-screen'>
+      <div className='flex-1'>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Cart' element={<Cart />} />
+          <Route path='/Wishlist' element={<Wishlist />} />
+          <Route path='/:id/view' element={<View />} />
+          <Route path='/*' element={<PageNotFound />} />
+        </Routes>
+      </div>
+      <Footer />
+    </div>
   )
 }
+
 export default App
