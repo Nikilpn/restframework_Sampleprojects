@@ -30,14 +30,7 @@ class TagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = ['name']
 
-
 class ProductSerializer(serializers.ModelSerializer):
-
-    images = ProductImageSerializer(many=True, read_only=True)
-    reviews = ReviewSerializer(many=True, read_only=True)
-    dimensions = DimensionSerializer(read_only=True)
-    tags = TagSerializer(many=True, read_only=True)
-
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = '__all__'  # nested serializers കളഞ്ഞ്
