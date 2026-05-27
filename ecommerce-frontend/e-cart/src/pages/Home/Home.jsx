@@ -1,28 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import './Home.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllProducts } from '../../redux/productsSlice'
 
 function Home() {
-return (
-<>
-  <Header />
-  <div className='pt-36 mx-5'>
-    <div className='grid grid-cols-4 gap-4'>
-      <div className='rounded p-2 shadow'>
-        {/* image */}
-        <img height={"200px"} src={"https://cdn.dummyjson.com/product-images/beauty/powder-canister/thumbnail.webp"} alt="" />
-        <div className='text-center'>
-          {/* title */}
-          <h3 className='text-center font bold text-2xl my-2'>Title</h3>
-          
-          {/* Link */}
-          <Link to={`/:id/view`} className='bg-emerald-600 p-1 rounded text-white mt-3 inline-block'>View More..</Link>
+  const dispatch = useDispatch()
+  const { allproducts, loading, error } = useSelector(state => state.productsReducer)
+
+  useEffect(() => {
+    if (allproducts.length === 0) {
+      dispatch(fetchAllProducts())
+    }
+  }, [])
+
+  return (
+    <>
+      <Header />
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className='pt-36 mx-5'>
+          <div className='grid grid-cols-4 gap-4'>
+            {allproducts?.length > 0 ? allproducts?.map((product) => (
+              <div key={product?.id} className='rounded p-2 shadow'>
+                <img height={"200px"} src={product?.thumbnail} alt="" />
+                <div className='text-center'>
+                  <h3 className='text-center font-bold text-2xl my-2'>{product?.title}</h3>
+                  <Link to={`${product?.id}/view`} className='bg-emerald-600 p-1 rounded text-white mt-3 inline-block'>View More..</Link>
+                </div>
+              </div>
+            )) : <p>No Products Found</p>}
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</>
+      )}
+    </>
   )
 }
+
 export default Home
