@@ -2,15 +2,12 @@
   .grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-
-  .home-content {
-    padding-top: 200px !important;
-  }
 }
 
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: repeat(1, 1fr) !important;
+    
   }
 
   .mx-5 {
@@ -18,13 +15,19 @@
     margin-right: 8px !important;
   }
 
-  .home-content {
-    padding-top: 210px !important;
+  /* image size കുറയ്ക്കുക */
+  .grid img {
+    height: 180px !important;
+    object-fit: contain !important;
   }
 
-  img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
+  /* title size */
+  .grid h3 {
+    font-size: 1rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .flex.justify-center {
+    gap: 20px !important;
   }
 }

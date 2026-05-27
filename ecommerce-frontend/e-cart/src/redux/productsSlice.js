@@ -4,6 +4,7 @@ import axios from "axios";
 
 export const fetchAllProducts=createAsyncThunk("products/fetchAllProducts",async()=>{
     const result =await axios.get("https://e-commerce-d2dn.onrender.com/api/products/")
+    sessionStorage.setItem("allproducts",JSON.stringify(result.data))
    
     return result.data
 })

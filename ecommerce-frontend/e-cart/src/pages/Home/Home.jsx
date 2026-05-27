@@ -24,11 +24,19 @@ function Home() {
         <div className='pt-36 mx-5'>
           <div className='grid grid-cols-4 gap-4'>
             {allproducts?.length > 0 ? allproducts?.map((product) => (
-              <div key={product?.id} className='rounded p-2 shadow'>
-                <img height={"200px"} src={product?.thumbnail} alt="" />
-                <div className='text-center'>
+              <div key={product?.id} className='rounded p-2 shadow flex flex-col h-full'>
+                <div className='flex justify-center items-center h-48'>
+                  <img
+                    className='h-full w-full object-contain'
+                    src={product?.thumbnail}
+                    alt={product?.title}
+                  />
+                </div>
+                <div className='text-center flex flex-col flex-1'>
                   <h3 className='text-center font-bold text-2xl my-2'>{product?.title}</h3>
-                  <Link to={`${product?.id}/view`} className='bg-emerald-600 p-1 rounded text-white mt-3 inline-block'>View More..</Link>
+                  <div className='mt-auto pb-2'>
+                    <Link to={`${product?.id}/view`} className='bg-emerald-600 p-1 rounded text-white mt-3 inline-block'>View More..</Link>
+                  </div>
                 </div>
               </div>
             )) : <p>No Products Found</p>}

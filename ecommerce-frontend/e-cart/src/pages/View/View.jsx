@@ -1,24 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faHeart, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllProducts } from '../../redux/productsSlice'
 import Header from '../../components/Header/Header'
+import "./View.css"
+import { useDispatch, useSelector } from 'react-redux'
+import { addToWishList } from '../../redux/slice/wishListSlice'
 
 function View() {
   const { id } = useParams()
-  const dispatch = useDispatch()
-  const { allproducts, loading } = useSelector(state => state.productsReducer)
-  const product = allproducts?.find(p => p.id === parseInt(id))
+  const dispatch=useDispatch()
+  const wishlistData=useSelector(state=>state.wishListReducer)
+  console.log(wishlistData);
+  
+
+  const [product, setProduct ] =useState({})
+
+  const handleAddWishList=()=>{
+    const existingProduct=wishlistData?.find(item=>item.id==product.id)
+    if(existingProduct){
+      alert("Product already in wishlist ...Add Another!!!")
+    }
+    else{
+      dispatch(addToWishList(product))
+
+    }
+  }
+
 
   useEffect(() => {
-    if (allproducts.length === 0) {
-      dispatch(fetchAllProducts())
-    }
+    const allproducts=JSON.parse(sessionStorage.getItem("allproducts"))
+    setProduct(allproducts.find((item)=>item.id==id))
+    
+
   }, [])
 
-  if (loading || !product) return <><Header /><p className='pt-36 mx-5'>Loading...</p></>
+
 
   return (
     <>
@@ -29,7 +46,7 @@ function View() {
           <div className='rounded p-2 shadow flex flex-col items-center'>
             <img height={"300px"} src={product?.thumbnail} alt="" />
             <div className='flex justify-evenly w-full mt-4'>
-              <button className='bg-blue-600 text-white px-4 py-2 rounded'>
+              <button  onClick={handleAddWishList} className='bg-blue-600 text-white px-4 py-2 rounded'>
                 <FontAwesomeIcon icon={faHeart} className='mr-2' />
                 ADD TO WISHLIST
               </button>

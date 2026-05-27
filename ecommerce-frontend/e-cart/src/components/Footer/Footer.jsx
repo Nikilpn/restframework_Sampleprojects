@@ -45,7 +45,7 @@ function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className='text-center border-t border-violet-600 mt-8 pt-4 text-sm text-gray-300'>
+        <div className='text-center border-t border-emarld-600 mt-8 pt-4 text-sm text-gray-300'>
           <p>© 2024 Friends Cart. All rights reserved.</p>
         </div>
 
