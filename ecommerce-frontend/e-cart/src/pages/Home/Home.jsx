@@ -49,7 +49,7 @@ function Home() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className='pt-36 mx-5'>
+        <div className='home-content pt-36 mx-5'>
           <div className='grid grid-cols-4 gap-4'>
             {allproducts?.length > 0 ? visibleProduct?.map((product) => (
               <div key={product?.id} className='rounded p-2 shadow flex flex-col h-full'>
