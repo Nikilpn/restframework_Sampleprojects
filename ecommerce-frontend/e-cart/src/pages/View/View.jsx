@@ -6,6 +6,7 @@ import Header from '../../components/Header/Header'
 import "./View.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWishList } from '../../redux/slice/wishListSlice'
+import { addToCart } from '../../redux/slice/cartSlice'
 
 function View() {
   const { id } = useParams()
@@ -23,6 +24,7 @@ function View() {
     }
     else{
       dispatch(addToWishList(product))
+      alert("Added to Wishlist")
 
     }
   }
@@ -50,7 +52,7 @@ function View() {
                 <FontAwesomeIcon icon={faHeart} className='mr-2' />
                 ADD TO WISHLIST
               </button>
-              <button className='bg-green-600 text-white px-4 py-2 rounded'>
+              <button onClick={()=>dispatch(addToCart(product))} className='bg-green-600 text-white px-4 py-2 rounded'>
                 <FontAwesomeIcon icon={faCartShopping} className='mr-2' />
                 ADD TO CART
               </button>

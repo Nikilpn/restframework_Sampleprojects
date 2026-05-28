@@ -6,11 +6,23 @@ import Header from '../../components/Header/Header'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeWishListItem } from '../../redux/slice/wishListSlice' 
 import "./Wishlist.css"
+import { addToCart } from '../../redux/slice/cartSlice'
 
 
 function Wishlist() {
   const wishListData = useSelector(state => state.wishListReducer)
   const dispatch = useDispatch()
+  const cartData=useSelector(state=>state.cartReducer)
+
+  const handleAddToCart=(product)=>{
+    dispatch(addToCart(product))
+    dispatch(removeWishListItem(product?.id))
+    const existingProduct=cartData?.find(item=>item?.id==product?.id)
+    if(existingProduct){
+      alert("Product Updated Successfully!!!")
+    }
+  }
+
 
   return (
     <>
@@ -30,10 +42,10 @@ function Wishlist() {
 
                   {/* action buttons */}
                   <div className='flex justify-center text-2xl my-2 gap-6' >
-                    <button onClick={() => dispatch(removeWishListItem(product.id))}> 
+                    <button onClick={() => dispatch(removeWishListItem(product?.id))}>
                       <FontAwesomeIcon icon={faHeartCircleXmark} className='text-red-500' />
                     </button>
-                    <button onClick={() => dispatch(addToCart(product))}> 
+                    <button onClick={() => handleAddToCart(product)}>
                       <FontAwesomeIcon icon={faCartShopping} className='text-green-500' />
                     </button>
                   </div>
