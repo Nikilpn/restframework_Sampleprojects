@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+      <Header homeHeader={true} />
       {loading ? (
         <p>Loading...</p>
       ) : (

@@ -2,13 +2,16 @@ import { faCartShopping, faStar, faPeopleGroup } from '@fortawesome/free-solid-s
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import './Header.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchProducts } from '../../redux/productsSlice';
 
-function Header() {
+function Header({homeHeader}) {
   const wishListData=useSelector(state=>state.wishListReducer)
   const CartData=useSelector(state=>state.cartReducer
+  
 
   )
+  const dispatch=useDispatch()
   return (
     <>
       <nav className='flex justify-between p-5 text-xl bg-emerald-600 text-white font-bold fixed w-full top-0 z-50'>
@@ -16,6 +19,12 @@ function Header() {
           <FontAwesomeIcon icon={faPeopleGroup} />Friends Cart
         </Link>
         <ul className='flex desktop-nav'>
+          {
+            homeHeader && <li className='mx-5'>
+              <input onChange={(e)=>dispatch(searchProducts(e.target.value))} type='text' className='text-white-500 p-3 rounded border outline-none'placeholder='Search Products Here'/>
+              
+            </li>
+          }
           <li className='mx-5 rounded-1 border-2 p-3'>
             <Link to={"/Wishlist"} className='flex items-center gap-2'>
               <FontAwesomeIcon icon={faStar} className='text-red-500' />
